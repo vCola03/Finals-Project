@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROMA</title>
+
+    <link rel="stylesheet"
+          href="https://pyscript.net/releases/2025.3.1/core.css">
+    <script type="module"
+            src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f0;
+            color: #493329;
+        }
+
+        header {
+            background: #70452f;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        nav {
+            background: #f1d5b8;
+            padding: 14px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #493329;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 850px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            padding: 22px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #00000010;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .product {
+            background: #fff1e3;
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #70452f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #936345;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #d6c3b4;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            background: #70452f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>☕ AROMA</h1>
+        <p>Freshly brewed happiness in every cup!</p>
+        <button id="welcome-btn">Welcome Message</button>
+        <p id="welcome-message"></p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Our Café!</h2>
+            <p>
+                AROMA serves delicious coffee,
+                refreshing drinks, and freshly baked pastries
+                at student-friendly prices.
+            </p>
+        </section>
+
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="products">
+                <div class="product">
+                    <h3>☕ Iced Coffee</h3>
+                    <p>₱80.00</p>
+                </div>
+                <div class="product">
+                    <h3>🍵 Matcha Latte</h3>
+                    <p>₱100.00</p>
+                </div>
+                <div class="product">
+                    <h3>🥐 Croissant</h3>
+                    <p>₱60.00</p>
+                </div>
+                <div class="product">
+                    <h3>🍰 Cake</h3>
+                    <p>₱60.00</p>
+                </div>
+            </div>
+            <div class="products">
+    <!-- Keep your existing product items here -->
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="button" onclick="goToOrder()">
+        Next →
+    </button>
+</div>
+        </section>
+
+        <section id="order">
+            <h2>Place Your Order</h2>
+
+            <form id="order-form">
+                <label for="customer">Customer Name</label>
+                <input id="customer" type="text"
+                       placeholder="Enter your name" required>
+
+                <label for="product">Choose a Product</label>
+                <select id="product">
+                    <option value="80">Iced Coffee - ₱80</option>
+                    <option value="100">Matcha Latte - ₱100</option>
+                    <option value="60">Croissant - ₱60</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number"
+                       min="1" max="100" value="1" required>
+
+                <button type="submit">Calculate Order</button>
+            </form>
+
+            <div id="result" aria-live="polite"></div>
+        </section>  
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>📍 Sitio Palua Maria, Cebu City</p>
+            <p>📞 0999-581-7637</p>
+            <p>🕒 Monday–Saturday, 8:00 AM–8:00 PM</p>
+            <p>Replace these details with your actual business information.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 AROMA | Made by Cebu Eastern College Students</p>
+    </footer>
+
+    <script type="py">
+from pyscript import document
+from pyodide.ffi import create_proxy
+
+def welcome_message(event):
+    document.getElementById("welcome-message").innerText = (
+        "Welcome to AROMA! We are happy to serve you!"
+    )
+
+def calculate_order(event):
+    event.preventDefault()
+
+    name = document.getElementById("customer").value.strip()
+    price = float(document.getElementById("product").value)
+    quantity_text = document.getElementById("quantity").value
+
+    if not name:
+        document.getElementById("result").innerText = (
+            "Please enter your name."
+        )
+        return
+
+    try:
+        quantity = int(quantity_text)
+        if quantity < 1 or quantity > 100:
+            raise ValueError
+    except (ValueError, TypeError):
+        document.getElementById("result").innerText = (
+            "Please enter a quantity from 1 to 100."
+        )
+        return
+
+    total = price * quantity
+
+    document.getElementById("result").innerHTML = (
+        f"<h3>Order Summary</h3>"
+        f"<p>Thank you, {name.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')}!</p>"
+        f"<p>Quantity: {quantity}</p>"
+        f"<p>Total: ₱{total:,.2f}</p>"
+        f"<p>Your sample order has been calculated.</p>"
+    )
+
+document.getElementById("welcome-btn").addEventListener(
+    "click", create_proxy(welcome_message)
+)
+
+document.getElementById("order-form").addEventListener(
+    "submit", create_proxy(calculate_order)
+)
+    </script>
+</body>
+</html>
