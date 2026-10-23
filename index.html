@@ -1,16 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="LOGO.PNG">
-    <title>AROMA – Student-friendly café in Cebu City</title>
+    <title>AROMA</title>
 
-    <link rel="stylesheet" href="https://pyscript.net/releases/2025.3.1/core.css">
-    <script type="module" src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+    <link rel="stylesheet"
+          href="https://pyscript.net/releases/2025.3.1/core.css">
+    <script type="module"
+            src="https://pyscript.net/releases/2025.3.1/core.js"></script>
 
     <style>
-        
         * {
             box-sizing: border-box;
         }
@@ -20,324 +22,256 @@
             font-family: Arial, sans-serif;
             background: #fff8f0;
             color: #493329;
-            line-height: 1.6;
         }
 
-        h1, h2, h3 {
-            font-family: Georgia, serif;
-            margin-top: 0;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
-        /* Buttons */
-        .button {
-            display: inline-block;
+        header {
             background: #70452f;
             color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 14px 24px;
-            border-radius: 8px;
+            text-align: center;
+            padding: 30px 15px;
         }
 
-        .button:hover {
-            background: #2b1a12;
-        }
-
-        .button-outline {
-            background: transparent;
-            color: #70452f;
-            border: 2px solid #70452f;
-        }
-
-        .button-outline:hover {
+        nav {
             background: #f1d5b8;
-            color: #2b1a12;
+            padding: 14px;
+            text-align: center;
         }
 
-        /*  Top bar  */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-        }
-
-        .logo {
-            font-family: Georgia, serif;
-            font-size: 1.6rem;
-            color: #70452f;
-            text-decoration: none;
-        }
-
-        .topbar nav a {
-            margin-left: 18px;
+        nav a {
             color: #493329;
             text-decoration: none;
+            margin: 0 12px;
             font-weight: bold;
         }
 
-        /*  Header  */
-        .header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            padding: 40px 0 70px;
-        }
-
-        .header h1 {
-            font-size: 3.2rem;
-            line-height: 1.1;
-            color: #2b1a12;
-        }
-
-        .header p {
-            font-size: 1.15rem;
-        }
-
-        /*  Menu board  */
-        .menu-board {
-            background: #2b1a12;
-            color: #f1d5b8;
-            border: 8px solid #70452f;
-            border-radius: 6px;
-            padding: 26px;
-        }
-
-        .menu-board h2 {
-            color: white;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dotted #70452f;
-        }
-
-        .menu-item .price {
-            font-weight: bold;
-            color: #9aab62;
-        }
-
-        .menu-note {
-            font-size: 0.9rem;
-            color: #c9ad92;
-        }
-
-        /*  Reasons section  */
-        .reasons {
-            background: #f1d5b8;
-            padding: 60px 0;
-        }
-
-        .reasons-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .reasons h3 {
-            color: #70452f;
-        }
-
-        /*  Visit section  */
-        .visit {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 60px 0;
-        }
-
-        /*  Open - closed badge   */
-        .open-status {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            background: #eee;
-        }
-
-        .open-status.open {
-            background: #dff0c8;
-            color: #3d5a14;
-        }
-
-        .open-status.closed {
-            background: #f6d6d0;
-            color: #8a2c1d;
-        }
-
-        /*  Final call to action  */
-        .final-cta {
-            background: #70452f;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .final-cta .button {
-            background: #fff8f0;
-            color: #2b1a12;
-        }
-
-        /*  Footer  */
-        footer {
-            background: #2b1a12;
-            color: #f1d5b8;
-            text-align: center;
+        main {
+            max-width: 850px;
+            margin: auto;
             padding: 20px;
         }
 
-        /*  stack everything in one column  */
-        @media (max-width: 760px) {
-            .header,
-            .visit,
-            .reasons-grid {
-                grid-template-columns: 1fr;
-            }
+        section {
+            background: white;
+            padding: 22px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #00000010;
+        }
 
-            .header h1 {
-                font-size: 2.4rem;
-            }
+        .products {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .product {
+            background: #fff1e3;
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #70452f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #936345;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #d6c3b4;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            background: #70452f;
+            color: white;
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>☕ AROMA</h1>
+        <p>Freshly brewed happiness in every cup!</p>
+        <button id="welcome-btn">Welcome Message</button>
+        <p id="welcome-message"></p>
+    </header>
 
-    <!-- Top bar -->
-    <div class="container">
-        <div class="topbar">
-            <a class="logo" href="#top">☕ AROMA</a>
-            <nav>
-                <a href="#menu">Menu</a>
-                <a href="#visit">Visit</a>
-                <a href="n.html">Order</a>
-            </nav>
-        </div>
+    <nav>
 
-        <!-- Header -->
-        <header class="header" id="top">
-            <div>
-                <h1>Fresh coffee that fits a student budget.</h1>
-                <p>
-                    Iced coffee, matcha latte and freshly baked pastries,
-                    made in Sitio Palua Maria. Most of the menu is under ₱60.
-                </p>
-                <a class="button" href="homepage.html">Order now</a>
-                <a class="button button-outline" href="homepage.html">See the menu</a>
-            </div>
+        <a href="landingpage.html">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-            <!-- Menu board -->
-            <aside class="menu-board" id="menu">
-                <h2>Today at AROMA</h2>
+    <main>
+        <section id="home">
+            <h2>Welcome to Our Café!</h2>
+            <p>
+                AROMA serves delicious coffee,
+                refreshing drinks, and freshly baked pastries
+                at student-friendly prices.
+            </p>
 
-                <div class="menu-item">
-                    <span>☕ Iced Coffee</span>
-                    <span class="price">₱60</span>
-                </div>
-                <div class="menu-item">
-                    <span>🍵 Matcha Latte</span>
-                    <span class="price">₱39</span>
-                </div>
-                <div class="menu-item">
-                    <span>🥐 Croissant</span>
-                    <span class="price">₱35</span>
-                </div>
-                <div class="menu-item">
-                    <span>🍰 Cake</span>
-                    <span class="price">₱55</span>
-                </div>
-                <div class="menu-item">
-                    <span>🧀 Cheesecake</span>
-                    <span class="price">₱45</span>
-                </div>
-
-                <p class="menu-note">More drinks and bakes coming soon.</p>
-            </aside>
-        </header>
-    </div>
-
-    <!-- Reasons to visit -->
-    <section class="reasons">
-        <div class="container">
-            <h2>Why people stop by</h2>
-            <div class="reasons-grid">
-                <div>
-                    <h3>Prices students can afford</h3>
-                    <p>A drink and a pastry for less than a typical lunch.</p>
-                </div>
-                <div>
-                    <h3>Made fresh</h3>
-                    <p>Coffee is brewed to order and pastries are baked fresh.</p>
-                </div>
-                <div>
-                    <h3>Run by students</h3>
-                    <p>Built by Cebu Eastern College students, for people like us.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visit info -->
-    <div class="container">
-        <section class="visit" id="visit">
-            <div>
-                <h2>Come say hi</h2>
-                <p id="open-status" class="open-status">Checking hours...</p>
-                <p>📍 Sitio Palua Maria, Cebu City</p>
-                <p>🕒 Monday to Saturday, 8:00 AM to 8:00 PM</p>
-                <p>📞 0999-581-7637</p>
-            </div>
-            <div>
-                <h2>Not nearby?</h2>
-                <p>
-                    Pick your drink, set the quantity and see your total
-                    in seconds with our order calculator.
-                </p>
-                <a class="button" href="n.html">Calculate my order</a>
-            </div>
+            <section id="ad">
+        <h2>🎬 Watch Our Ad</h2>
+               <center><video width="600" 
+    class="ad-video"
+    autoplay                       
+    controls
+    muted
+    loop
+    playsinline
+    poster="ad.mp4"
+  >
+    <source
+      src="ad.mp4"
+      type="video/mp4"
+    >
+  </video></center>
         </section>
-    </div>
+            
+        </section>
 
-    <!-- Final call to action -->
-    <section class="final-cta">
-        <h2>Your next cup is a few taps away.</h2>
-        <a class="button" href="n.html">Start your order</a>
-    </section>
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="products">
+                <div class="product">
+                    <h3>☕ Iced Coffee</h3>
+                    <p>₱60.00</p>
+                </div>
+                <div class="product">
+                    <h3>🍵 Matcha Latte</h3>
+                    <p>₱39.00</p>
+                </div>
+                <div class="product">
+                    <h3>🥐 Croissant</h3>
+                    <p>₱35.00</p>
+                </div>
+                <div class="product">
+                    <h3>🍰 Cake</h3>
+                    <p>₱55.00</p>
+                </div>
+                <div class="product">
+                    <h3>🧀 CheeseCake</h3>
+                    <p>₱45.00</p>
+                </div>
+                <div class="product">
+                    <h3>AVAILABLE MORE SOON!</h3>
+                </div>
+            </div>
+            <div class="products">
+    <!-- Keep your existing product items here -->
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="button" onclick="goToOrder()">
+        Next →
+    </button>
+</div>
+        </section>
+
+        <section id="order">
+            <h2>Place Your Order</h2>
+
+            <form id="order-form">
+                <label for="customer">Customer Name</label>
+                <input id="customer" type="text"
+                       placeholder="Enter your name" required>
+
+                <label for="product">Choose a Product</label>
+                <select id="product">
+                    <option value="60">Iced Coffee - ₱60</option>
+                    <option value="39">Matcha Latte - ₱39</option>
+                    <option value="35">Croissant - ₱35</option>
+                    <option value="55">Cake - ₱55</option>
+                    <option value="45">Cheese Cake - ₱45</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number"
+                       min="1" max="100" value="1" required>
+
+                <button type="submit">Calculate Order</button>
+            </form>
+
+            <div id="result" aria-live="polite"></div>
+        </section>  
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>📍 Sitio Palua Maria, Cebu City</p>
+            <p>📞 0999-581-7637</p>
+            <p>🕒 Monday–Saturday, 8:00 AM–8:00 PM</p>
+        </section>
+    </main>
 
     <footer>
         <p>© 2026 AROMA | Made by Cebu Eastern College Students</p>
     </footer>
 
-    <!-- shows whether the café is open right now -->
     <script type="py">
-from datetime import datetime
 from pyscript import document
+from pyodide.ffi import create_proxy
 
-now = datetime.now()
-day = now.weekday()   # Monday = 0 ... Sunday = 6
-hour = now.hour       # 0 to 23
+def welcome_message(event):
+    document.getElementById("welcome-message").innerText = (
+        "Welcome to AROMA! We are happy to serve you!"
+    )
 
-# Open Monday to Saturday, 8:00 AM to 8:00 PM
-is_open = day <= 5 and 8 <= hour < 20
+def calculate_order(event):
+    event.preventDefault()
 
-badge = document.getElementById("open-status")
+    name = document.getElementById("customer").value.strip()
+    price = float(document.getElementById("product").value)
+    quantity_text = document.getElementById("quantity").value
 
-if is_open:
-    badge.innerText = "🟢 We're open now"
-    badge.classList.add("open")
-else:
-    badge.innerText = "🔴 We're closed right now"
-    badge.classList.add("closed")
+    if not name:
+        document.getElementById("result").innerText = (
+            "Please enter your name."
+        )
+        return
+
+    try:
+        quantity = int(quantity_text)
+        if quantity < 1 or quantity > 100:
+            raise ValueError
+    except (ValueError, TypeError):
+        document.getElementById("result").innerText = (
+            "Please enter a quantity from 1 to 100."
+        )
+        return
+
+    total = price * quantity
+
+    document.getElementById("result").innerHTML = (
+        f"<h3>Order Summary</h3>"
+        f"<p>Thank you, {name.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')}!</p>"
+        f"<p>Quantity: {quantity}</p>"
+        f"<p>Total: ₱{total:,.2f}</p>"
+        f"<p>Your sample order has been calculated.</p>"
+    )
+
+document.getElementById("welcome-btn").addEventListener(
+    "click", create_proxy(welcome_message)
+)
+
+document.getElementById("order-form").addEventListener(
+    "submit", create_proxy(calculate_order)
+)
     </script>
-
 </body>
 </html>
